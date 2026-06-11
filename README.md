@@ -1,4 +1,5 @@
 简介
+发行文件位于dist文件夹下面
 •	项目名：Batch Printing Tool for Multiple Documents（多格式文档批量打印工具）
 •	简要：基于 Windows 的 GUI 工具，使用系统默认关联软件按顺序将多个文档发送到指定打印机。适用于 Word/Excel/PDF/图片/文本等常见格式。
 主要特性

@@ -69,7 +69,6 @@ def print_file_with_default_app(file_path, printer_name):
         return False, f"打印失败 {os.path.basename(file_path)}: {str(e)}"
 
 def get_printers():
-    """获取系统中可用的打印机列表"""
     printers = []
     try:
         for printer in win32print.EnumPrinters(win32print.PRINTER_ENUM_LOCAL | win32print.PRINTER_ENUM_CONNECTIONS):
@@ -92,7 +91,6 @@ def save_settings(printer_name):
         print(f"保存设置失败: {e}")
 
 def load_settings():
-    """加载用户设置"""
     try:
         config_dir = Path.home() / ".document_printer"
         config_file = config_dir / "settings.json"
@@ -106,11 +104,10 @@ def load_settings():
     return ""
 
 def print_files_gui():
-    """图形界面主函数"""
     global log_text
     
     root = tk.Tk()
-    root.title("多格式文档多选打印工具（默认软件版）")
+    root.title("多格式文档多选打印工具")
     root.geometry("800x700")
     root.resizable(True, True)
     
@@ -251,7 +248,7 @@ def print_files_gui():
             return
         
         selected_files = [file_paths[i] for i in selected_indices]
-        update_log(f"准备打印 {len(selected_files)} 个文件（使用系统默认软件）")
+        update_log(f"准备打印 {len(selected_files)} 个文件")
         
         threading.Thread(target=print_files_thread, args=(selected_files, printer), daemon=True).start()
     
@@ -298,7 +295,7 @@ def print_files_gui():
     # 版权信息
     copyright_frame = ttk.Frame(root)
     copyright_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=10, pady=10)
-    ttk.Label(copyright_frame, text="© 2026 文档打印工具（默认软件版）").pack(side=tk.LEFT)
+    ttk.Label(copyright_frame, text="© 2026 文档打印工具）").pack(side=tk.LEFT)
     
     # 设置列和行的权重
     main_frame.columnconfigure(1, weight=1)
